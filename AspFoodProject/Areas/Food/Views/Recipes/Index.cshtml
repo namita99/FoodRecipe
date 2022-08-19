@@ -1,0 +1,104 @@
+﻿@model IEnumerable<AspFoodProject.Models.Recipe>
+
+@{
+    ViewData["Title"] = "List of Recipes";
+}
+
+<h1 style="color:black"><center> @ViewData["Title"]</center></h1>
+
+
+<p><center>
+        <button type="button" class="btn btn-primary"> <a style="color:black" asp-action="Create">Create New</a> </button>
+
+</center>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RecipeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredients)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecipeDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsEnabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hours1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.hours2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingredients)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipeDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hours1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.hours2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                    <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@item.RecipeId">Edit</a> </button>
+                    <button type="button" class="btn btn-success">  <a style="color:black" asp-action="Details" asp-route-id="@item.RecipeId">Details</a> </button>
+                    <button type="button" class="btn btn-danger"> <a style="color:black" asp-action="Delete" asp-route-id="@item.RecipeId">Delete</a> </button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

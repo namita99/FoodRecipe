@@ -1,0 +1,42 @@
+﻿@model AspFoodProject.Models.Comment
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CommentName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CommentDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CommentDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.query)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.query)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Recipe)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Recipe.Address)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CommentId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,111 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+	.section-intro {
+		height: 820px;
+		background-image: url('/Images/slider1.jpg');
+		background-size: cover;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+		.section-intro h1 {
+			text-align: center;
+			color: #ffffff;
+			font-size: 4em;
+			font-weight: 700;
+		}
+
+		.section-intro header {
+			display: flex;
+			flex: 4;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+		}
+
+	.about-section {
+		display: flex;
+		align-items: center;
+		background-color: #f3f3f3c0;
+		padding: 50px 30px;
+	}
+
+		.about-section p,
+		.about-section h3 {
+			text-align: center;
+			width: 60%;
+			margin: auto;
+			font-family: 'Big Shoulders Text', cursive;
+			font-size: 1.8em;
+			text-transform: uppercase;
+		}
+
+
+</style>
+<section class="section-intro">
+	<header>
+		<h1><center> Welcome To Food Recipe </center> </h1>
+	</header>
+	</section>
+
+<section class="about-section">
+	<article>
+
+
+
+		<p>
+			Attracting epicureans who truly appreciate the art of fine dining,
+			this speciality restaurant serves authentic Sichuan and Cantonese cuisine in a
+			serene ambience designed in accordance with the principles of Feng Shui.
+			To give family a change treat them to a special evening at a fancy five star restaurant,
+			where they can enjoy not only fine food but gorgeous surroundings as well.
+
+		</p>
+
+	</article>
+</section>
+<!-- carousel section -->
+<div id="carouselExampleControls"
+	 class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img src="~/Images/slider1.jpg"
+				 class="d-block w-100" alt="food">
+		</div>
+		<div class="carousel-item">
+			<img src="~/Images/slider2.jpg"
+				 class="d-block w-100" alt="food">
+		</div>
+		<div class="carousel-item">
+			<img src="~/Images/slider3.jpg"
+				 class="d-block w-100" alt="food">
+		</div>
+		<div class="carousel-item">
+			<img src="~/Images/slider4.jpg"
+				 class="d-block w-100" alt="food">
+		</div>
+	</div>
+	<a class="carousel-control-prev"
+	   href="#carouselExampleControls"
+	   role="button" data-slide="prev">
+		<span class="carousel-control-prev-icon"
+			  aria-hidden="true">
+		</span>
+		<span class="sr-only"></span>
+	</a>
+	<a class="carousel-control-next"
+	   href="#carouselExampleControls"
+	   role="button" data-slide="next">
+		<span class="carousel-control-next-icon"
+			  aria-hidden="true">
+		</span>
+		<span class="sr-only"></span>
+	</a>
+</div>
+<hr />

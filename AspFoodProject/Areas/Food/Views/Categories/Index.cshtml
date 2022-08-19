@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AspFoodProject.Models.Category>
+
+@{
+    ViewData["Title"] = "List of Categories";
+}
+
+<h1 style="color:black"><center> @ViewData["Title"]</center></h1>
+
+<p>
+    <center>
+        <button type="button" class="btn btn-primary"> <a style="color:black" asp-action="Create">Create New</a> </button>
+
+    </center>
+</p>
+<table class="table">
+    <thead>
+        <tr class="alert-warning"> 
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr class="alert-info">
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageUrl)
+            </td>
+            <td>
+                    <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> </button>
+                    <button type="button" class="btn btn-success">  <a style="color:black" asp-action="Details" asp-route-id="@item.CategoryId">Details</a> </button>
+                    <button type="button" class="btn btn-danger"> <a style="color:black" asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a> </button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

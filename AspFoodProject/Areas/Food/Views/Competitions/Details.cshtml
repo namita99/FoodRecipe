@@ -1,0 +1,76 @@
+﻿@model AspFoodProject.Models.Competition
+
+@{
+    ViewData["Title"] = "Details of the Event";
+}
+
+<h1 style="color:black"><center> @ViewData["Title"]</center></h1>
+
+
+<div>
+    
+    <hr />
+
+    <div>
+
+
+        <div class="card" style="width:400px">
+
+            <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.EventName"
+                 style="max-height: 300px;">
+            <div class="card-body">
+                <h4 class="card-title">@Model.EventName</h4>
+                <div class="row">
+                    <div class="col card-text">
+                        @Html.DisplayNameFor(model => model.EventAddress)
+                    </div>
+                    <div class="col card-text">
+                        @Html.DisplayFor(model => model.EventAddress)
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col card-text">
+                        @Html.DisplayNameFor(model => model.OrderDateTime)
+                    </div>
+                    <div class="col card-text">
+                        @Html.DisplayFor(model => model.OrderDateTime)
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col card-text">
+                        @Html.DisplayNameFor(model => model.OrderDateTime1)
+                    </div>
+                    <div class="col card-text">
+                        @Html.DisplayFor(model => model.OrderDateTime1)
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col card-text">
+                        @Html.DisplayNameFor(model => model.hours1)
+                    </div>
+                    <div class="col card-text">
+                        @Html.DisplayFor(model => model.hours1)
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col card-text">
+                        @Html.DisplayNameFor(model => model.Phase)
+                    </div>
+                    <div class="col card-text">
+                        @Html.DisplayFor(model => model.Phase)
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> </button> |
+
+                <button type="button" class="btn btn-warning"> <a style="color:black" asp-action="Index">Back to List</a> </button>
+            </div>
+        </div>
+
+    

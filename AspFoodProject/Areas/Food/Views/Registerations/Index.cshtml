@@ -1,0 +1,71 @@
+﻿@model IEnumerable<AspFoodProject.Models.Registeration>
+
+@{
+    ViewData["Title"] = "List of Registerations";
+}
+
+<h1 style="color:black"><center> @ViewData["Title"]</center></h1>
+
+<p>
+   <button type="button" class="btn btn-primary"> <a style="color:black" asp-action="Create">Create New</a> </button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RegisterEmailID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsEnabled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Competition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterEmailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsEnabled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Competition.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+            </td>
+            <td>
+                  <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@item.RegisterId">Edit</a> </button>
+                        <button type="button" class="btn btn-success">  <a style="color:black" asp-action="Details" asp-route-id="@item.RegisterId">Details</a> </button>
+                        <button type="button" class="btn btn-danger"> <a style="color:black" asp-action="Delete" asp-route-id="@item.RegisterId">Delete</a> </button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

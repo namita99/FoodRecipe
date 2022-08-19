@@ -1,0 +1,41 @@
+﻿@model AspFoodProject.Models.SubCategory
+
+@{
+    ViewData["Title"] = "Details of the Subcategory";
+}
+
+<h1 style="color:black"><center> @ViewData["Title"]</center></h1>
+
+
+
+<div>
+   
+    <hr />
+
+    <div>
+
+
+        <div class="card" style="width:400px">
+
+            <img class="card-img-top" src="@Model.ImageUrl" alt="@Model.SubcategoryName"
+                 style="max-height: 300px;">
+            <div class="card-body">
+                <h4 class="card-title">@Model.SubcategoryName</h4>
+                <div class="row">
+                    <div class="col card-text">
+                        @Html.DisplayNameFor(model => model.SubcategoryDescription)
+                    </div>
+                    <div class="col card-text">
+                        @Html.DisplayFor(model => model.SubcategoryDescription)
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@Model.SubcategoryId">Edit</a> </button> |
+
+                <button type="button" class="btn btn-warning"> <a style="color:black" asp-action="Index">Back to List</a> </button>
+            </div>
+        </div>
+
+        
