@@ -191,5 +191,10 @@ namespace AspFoodProject.Areas.Food.Controllers
         {
             return _context.Categories.Any(e => e.CategoryId == id);
         }
+
+        public object DeleteCategory(int findCategoryID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

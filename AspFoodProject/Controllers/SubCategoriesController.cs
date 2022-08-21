@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
+using Microsoft.Extensions.Logging;
 
 namespace AspFoodProject.Controllers
 {
@@ -15,32 +16,74 @@ namespace AspFoodProject.Controllers
     public class SubCategoriesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<SubCategoriesController> _logger;
 
-        public SubCategoriesController(ApplicationDbContext context)
+
+        public SubCategoriesController(
+                   ApplicationDbContext context,
+                   ILogger<SubCategoriesController> logger)
         {
             _context = context;
+            _logger = logger;
+
         }
 
         // GET: api/SubCategories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SubCategory>>> GetSubcategories()
-        {
-            return await _context.Subcategories.ToListAsync();
-        }
+        //public async Task<ActionResult<IEnumerable<SubCategory>>> GetSubcategories()
+        //{
+        //    return await _context.Subcategories.ToListAsync();
+        //}
 
+        public async Task<IActionResult> GetSubCategories()
+        {
+            try
+            {
+                var Subcategories = await _context.Subcategories.ToListAsync();
+
+                if (Subcategories == null)
+                {
+                    _logger.LogWarning("No Categories were found in the database");
+                    return NotFound();
+                }
+                _logger.LogInformation("Extracted all the Categories from database");
+                return Ok(Subcategories);
+            }
+            catch
+            {
+                _logger.LogError("There was an attempt to retrieve information from the database");
+                return BadRequest();
+            }
+        }
         // GET: api/SubCategories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SubCategory>> GetSubCategory(int id)
+        public async Task<ActionResult<SubCategory>> GetSubCategory(int? id)
         {
-            var subCategory = await _context.Subcategories.FindAsync(id);
-
-            if (subCategory == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            return subCategory;
+            try
+            {
+                var SubCategory = await _context.Subcategories.FindAsync(id);
+                //var category = await _context.Categories
+                //                             .Include(c => c.Books)
+                //                             .SingleOrDefaultAsync(c => c.CategoryId == id);
+
+                if (SubCategory == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(SubCategory);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
+
 
         // PUT: api/SubCategories/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -78,28 +121,63 @@ namespace AspFoodProject.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<SubCategory>> PostSubCategory(SubCategory subCategory)
+        public async Task<IActionResult> PostSubCategory(SubCategory subCategory)
         {
-            _context.Subcategories.Add(subCategory);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Subcategories.Add(subCategory);
 
-            return CreatedAtAction("GetSubCategory", new { id = subCategory.SubcategoryId }, subCategory);
+                int countAffected = await _context.SaveChangesAsync();
+                if (countAffected > 0)
+                {
+                    // Return the link to the newly inserted row 
+                    var result = CreatedAtAction("GetSubcategory", new { id = subCategory.SubcategoryId }, subCategory);
+                    return Ok(result);
+
+                    // NOTE: Return the HTTP RESPONSE CODE 201 "Created"
+                    // Uri url;
+                    // System.Uri.TryCreate($"~/api/Categories/{category.CategoryId}", UriKind.Relative, out url); 
+                    // return Created(url, result);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (System.Exception exp)
+            {
+                ModelState.AddModelError("Post", exp.Message);
+                return BadRequest(ModelState);
+            }
         }
 
         // DELETE: api/SubCategories/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<SubCategory>> DeleteSubCategory(int id)
+        public async Task<ActionResult<SubCategory>> DeleteSubCategory(int? id)
         {
-            var subCategory = await _context.Subcategories.FindAsync(id);
-            if (subCategory == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            _context.Subcategories.Remove(subCategory);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var subCategory = await _context.Subcategories.FindAsync(id);
+                if (subCategory == null)
+                {
+                    return NotFound();
+                }
 
-            return subCategory;
+                _context.Subcategories.Remove(subCategory);
+                await _context.SaveChangesAsync();
+
+                return Ok(subCategory);
+            }
+
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         private bool SubCategoryExists(int id)

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
+using Microsoft.Extensions.Logging;
 
 namespace AspFoodProject.Controllers
 {
@@ -15,32 +16,74 @@ namespace AspFoodProject.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<CategoriesController> _logger;
 
-        public CategoriesController(ApplicationDbContext context)
+        public CategoriesController(
+            ApplicationDbContext context,
+            ILogger<CategoriesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        // public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        // {
+        //      return await _context.Categories.ToListAsync();
+        // }
+        public async Task<IActionResult> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            try
+            {
+                var categories = await _context.Categories.ToListAsync();
+
+                if (categories == null)
+                {
+                    _logger.LogWarning("No Categories were found in the database");
+                    return NotFound();
+                }
+                _logger.LogInformation("Extracted all the Categories from database");
+                return Ok(categories);
+            }
+            catch
+            {
+                _logger.LogError("There was an attempt to retrieve information from the database");
+                return BadRequest();
+            }
         }
+
 
         // GET: api/Categories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<IActionResult> GetCategory(int? id)
         {
-            var category = await _context.Categories.FindAsync(id);
-
-            if (category == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            return category;
+            try
+            {
+                var category = await _context.Categories.FindAsync(id);
+                //var category = await _context.Categories
+                //                             .Include(c => c.Books)
+                //                             .SingleOrDefaultAsync(c => c.CategoryId == id);
+
+                if (category == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(category);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
+
+
 
         // PUT: api/Categories/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -78,28 +121,68 @@ namespace AspFoodProject.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<IActionResult> PostCategory(Category category)
         {
-            _context.Categories.Add(category);
-            await _context.SaveChangesAsync();
+            // NOTE: NO LONGER NEEDED.  Refer to the <remarks> in the top of this Controller Class
+            //if (! ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            return CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
+            try
+            {
+                _context.Categories.Add(category);
+
+                int countAffected = await _context.SaveChangesAsync();
+                if (countAffected > 0)
+                {
+                    // Return the link to the newly inserted row 
+                    var result = CreatedAtAction("GetCategory", new { id = category.CategoryId }, category);
+                    return Ok(result);
+
+                    // NOTE: Return the HTTP RESPONSE CODE 201 "Created"
+                    // Uri url;
+                    // System.Uri.TryCreate($"~/api/Categories/{category.CategoryId}", UriKind.Relative, out url); 
+                    // return Created(url, result);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (System.Exception exp)
+            {
+                ModelState.AddModelError("Post", exp.Message);
+                return BadRequest(ModelState);
+            }
         }
 
         // DELETE: api/Categories/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Category>> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteCategory(int? id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            if (!id.HasValue)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
+            try
+            {
+                var category = await _context.Categories.FindAsync(id);
+                if (category == null)
+                {
+                    return NotFound();
+                }
 
-            return category;
+                _context.Categories.Remove(category);
+                await _context.SaveChangesAsync();
+
+                return Ok(category);
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
         private bool CategoryExists(int id)
