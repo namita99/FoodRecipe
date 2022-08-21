@@ -32,6 +32,8 @@ namespace AspFoodProject.Models
 
         #region Navigation Properties to the Recipe Model
 
+        [Display(Name = "Recipe Name")]
+
         public int RecipeId { get; set; }
 
         [ForeignKey(nameof(Comment.RecipeId))]

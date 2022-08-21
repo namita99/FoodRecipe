@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspFoodProject", "AspFoodProject\AspFoodProject.csproj", "{0D0E4E91-82F8-4453-B474-DCDDF8F33125}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspFood.xUnitTestProject", "AspFood.xUnitTestProject\AspFood.xUnitTestProject.csproj", "{5C93CC15-F28E-4245-A382-9D4203B2D3CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0D0E4E91-82F8-4453-B474-DCDDF8F33125}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D0E4E91-82F8-4453-B474-DCDDF8F33125}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D0E4E91-82F8-4453-B474-DCDDF8F33125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C93CC15-F28E-4245-A382-9D4203B2D3CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C93CC15-F28E-4245-A382-9D4203B2D3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C93CC15-F28E-4245-A382-9D4203B2D3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C93CC15-F28E-4245-A382-9D4203B2D3CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

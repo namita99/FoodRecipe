@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspFoodProject.Areas.Food.Controllers
 {
     [Area("Food")]
+  
     public class RecipesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -27,8 +29,34 @@ namespace AspFoodProject.Areas.Food.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        // GET: Food/Recipes
+        public async Task<IActionResult> Index1()
+        {
+            var applicationDbContext = _context.Recipes.Include(r => r.Category);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: Food/Recipes/Details/5
         public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var recipe = await _context.Recipes
+                .Include(r => r.Category)
+                .FirstOrDefaultAsync(m => m.RecipeId == id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+
+            return View(recipe);
+        }
+
+        // GET: Food/Recipes/Details/5
+        public async Task<IActionResult> Details1(int? id)
         {
             if (id == null)
             {
@@ -93,6 +121,60 @@ namespace AspFoodProject.Areas.Food.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("RecipeId,RecipeName,Ingredients,RecipeDescription,ImageUrl,IsEnabled,Name,Address,EmailID,OrderDateTime,hours1,hours2,CategoryId")] Recipe recipe)
+        {
+            if (id != recipe.RecipeId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(recipe);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!RecipeExists(recipe.RecipeId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", recipe.CategoryId);
+            return View(recipe);
+        }
+
+
+        // GET: Food/Recipes/Edit/5
+        public async Task<IActionResult> Edit1(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var recipe = await _context.Recipes.FindAsync(id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", recipe.CategoryId);
+            return View(recipe);
+        }
+
+        // POST: Food/Recipes/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit1(int id, [Bind("RecipeId,RecipeName,Ingredients,RecipeDescription,ImageUrl,IsEnabled,Name,Address,EmailID,OrderDateTime,hours1,hours2,CategoryId")] Recipe recipe)
         {
             if (id != recipe.RecipeId)
             {

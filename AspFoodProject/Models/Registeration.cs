@@ -53,6 +53,8 @@ namespace AspFoodProject.Models
 
         #region Navigation Properties to the Competition Model
 
+        [Display(Name = "Event Name")]
+
         public int EventId { get; set; }
 
         [ForeignKey(nameof(Registeration.EventId))]
@@ -62,6 +64,8 @@ namespace AspFoodProject.Models
 
 
         #region Navigation Properties to the Customer Model
+
+        [Display(Name = "Customer Name")]
 
         public int CustomerId { get; set; }
 

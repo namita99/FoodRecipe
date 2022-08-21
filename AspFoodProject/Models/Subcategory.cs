@@ -31,6 +31,8 @@ namespace AspFoodProject.Models
 
         #region Navigation Properties to the Category Model
 
+        [Display(Name = "Category Name")]
+
         public int CategoryId { get; set; }
 
         [ForeignKey(nameof(SubCategory.CategoryId))]

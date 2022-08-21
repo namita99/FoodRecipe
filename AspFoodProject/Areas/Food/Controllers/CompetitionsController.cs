@@ -26,8 +26,32 @@ namespace AspFoodProject.Areas.Food.Controllers
             return View(await _context.Events.ToListAsync());
         }
 
+        // GET: Food/Competitions
+        public async Task<IActionResult> Index1()
+        {
+            return View(await _context.Events.ToListAsync());
+        }
+
         // GET: Food/Competitions/Details/5
         public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var competition = await _context.Events
+                .FirstOrDefaultAsync(m => m.EventId == id);
+            if (competition == null)
+            {
+                return NotFound();
+            }
+
+            return View(competition);
+        }
+
+        // GET: Food/Competitions/Details/5
+        public async Task<IActionResult> Details1(int? id)
         {
             if (id == null)
             {

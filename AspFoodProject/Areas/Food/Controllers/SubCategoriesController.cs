@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
+using Microsoft.Extensions.Logging;
 
 namespace AspFoodProject.Areas.Food.Controllers
 {
@@ -14,15 +15,22 @@ namespace AspFoodProject.Areas.Food.Controllers
     public class SubCategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<SubCategoriesController> _logger;
 
-        public SubCategoriesController(ApplicationDbContext context)
+        public SubCategoriesController(
+                  ApplicationDbContext context,
+                  ILogger<SubCategoriesController> logger)
         {
             _context = context;
+            _logger = logger;
+
         }
 
         // GET: Food/SubCategories
         public async Task<IActionResult> Index()
         {
+            _logger.LogInformation("-------------- Retrieved all the Categories from the database");
+
             var applicationDbContext = _context.Subcategories.Include(s => s.Category);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -58,16 +66,32 @@ namespace AspFoodProject.Areas.Food.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SubcategoryId,SubcategoryName,SubcategoryDescription,ImageUrl,CategoryId")] SubCategory subCategory)
+        public async Task<IActionResult> Create([Bind("SubcategoryId,SubcategoryName,SubcategoryDescription,ImageUrl,CategoryId")] SubCategory subcategoryModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(subCategory);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Sanitize the data before consumption
+                subcategoryModel.SubcategoryName = subcategoryModel.SubcategoryName.Trim();
+
+                // Check for Duplicate CategoryName
+                bool isDuplicateFound
+                    = _context.Subcategories.Any(c => c.SubcategoryName == subcategoryModel.SubcategoryName);
+                if (isDuplicateFound)
+                {
+                    ModelState.AddModelError("SubcategoryName", "Duplicate! Another subcategory with same name exists");
+                }
+                else
+                {
+                    // Save the changes 
+                    _context.Add(subcategoryModel);
+                    await _context.SaveChangesAsync();              // update the database
+                    return RedirectToAction(nameof(Index));
+                }
+
+
+
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", subCategory.CategoryId);
-            return View(subCategory);
+            return View(subcategoryModel);
         }
 
         // GET: Food/SubCategories/Edit/5
@@ -92,35 +116,50 @@ namespace AspFoodProject.Areas.Food.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SubcategoryId,SubcategoryName,SubcategoryDescription,ImageUrl,CategoryId")] SubCategory subCategory)
+        public async Task<IActionResult> Edit(int id, [Bind("SubcategoryId,SubcategoryName,SubcategoryDescription,ImageUrl,CategoryId")] SubCategory subcategoryModel)
         {
-            if (id != subCategory.SubcategoryId)
+            if (id != subcategoryModel.SubcategoryId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
+                // Sanitize the data before consumption
+                subcategoryModel.SubcategoryName = subcategoryModel.SubcategoryName.Trim();
+
+                // Check for duplicate Category
+                bool isDuplicateFound
+                    = _context.Subcategories.Any(c => c.SubcategoryName == subcategoryModel.SubcategoryName
+                                                   && c.SubcategoryId != subcategoryModel.SubcategoryId);
+                if (isDuplicateFound)
                 {
-                    _context.Update(subCategory);
-                    await _context.SaveChangesAsync();
+                    ModelState.AddModelError("SubcategoryName", "A Duplicate Subcategory was found!");
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!SubCategoryExists(subCategory.SubcategoryId))
+                    try
                     {
-                        return NotFound();
+                        _context.Update(subcategoryModel);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!SubCategoryExists(subcategoryModel.SubcategoryId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", subCategory.CategoryId);
-            return View(subCategory);
+                
+            return View(subcategoryModel);
         }
 
         // GET: Food/SubCategories/Delete/5

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
+using Microsoft.Extensions.Logging;
 
 namespace AspFoodProject.Areas.Food.Controllers
 {
@@ -14,15 +15,23 @@ namespace AspFoodProject.Areas.Food.Controllers
     public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<CategoriesController> _logger;
 
-        public CategoriesController(ApplicationDbContext context)
+
+        public CategoriesController(
+                   ApplicationDbContext context,
+                   ILogger<CategoriesController> logger)
         {
             _context = context;
+            _logger = logger;
+
         }
 
         // GET: Food/Categories
         public async Task<IActionResult> Index()
         {
+            _logger.LogInformation("-------------- Retrieved all the Categories from the database");
+
             return View(await _context.Categories.ToListAsync());
         }
 
@@ -55,15 +64,29 @@ namespace AspFoodProject.Areas.Food.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,CategoryDescription,ImageUrl")] Category category)
+        public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,CategoryDescription,ImageUrl")] Category categoryModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // Sanitize the data before consumption
+                categoryModel.CategoryName = categoryModel.CategoryName.Trim();
+
+                // Check for Duplicate CategoryName
+                bool isDuplicateFound
+                    = _context.Categories.Any(c => c.CategoryName == categoryModel.CategoryName);
+                if (isDuplicateFound)
+                {
+                    ModelState.AddModelError("CategoryName", "Duplicate! Another category with same name exists");
+                }
+                else
+                {
+                    // Save the changes 
+                    _context.Add(categoryModel);
+                    await _context.SaveChangesAsync();              // update the database
+                    return RedirectToAction(nameof(Index));
+                }
             }
-            return View(category);
+            return View(categoryModel);
         }
 
         // GET: Food/Categories/Edit/5
@@ -87,34 +110,52 @@ namespace AspFoodProject.Areas.Food.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryName,CategoryDescription,ImageUrl")] Category category)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryName,CategoryDescription,ImageUrl")] Category categoryModel)
         {
-            if (id != category.CategoryId)
+            if (id != categoryModel.CategoryId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
+                // Sanitize the data before consumption
+                categoryModel.CategoryName = categoryModel.CategoryName.Trim();
+
+                // Check for duplicate Category
+                bool isDuplicateFound
+                    = _context.Categories.Any(c => c.CategoryName == categoryModel.CategoryName
+                                                   && c.CategoryId != categoryModel.CategoryId);
+                if (isDuplicateFound)
                 {
-                    _context.Update(category);
-                    await _context.SaveChangesAsync();
+                    ModelState.AddModelError("CategoryName", "A Duplicate Category was found!");
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!CategoryExists(category.CategoryId))
+
+
+                    try
                     {
-                        return NotFound();
+                        _context.Update(categoryModel);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!CategoryExists(categoryModel.CategoryId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
-            return View(category);
+                
+
+            return View(categoryModel);
         }
 
         // GET: Food/Categories/Delete/5

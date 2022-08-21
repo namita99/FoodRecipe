@@ -4,6 +4,74 @@
     ViewData["Title"] = "List of Subcategories";
 }
 
+<header>
+	<nav class="navbar navbar-expand navbar-dark bg-success">
+		<div class="container-fluid">
+			<a class="nav-link text-dark" asp-area="" asp-page="/Index">
+				<img src="~/Images/logo.png" style="width:35px" /> Food Recipe
+			</a>
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+				<li class="active">
+					<a class="nav-link text-dark"
+					   asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">Home</a>
+				</li>
+				<li>
+					<a class="nav-link text-dark" asp-area="" asp-page="/about">About</a>
+				</li>
+				<li>
+					<a class="nav-link text-dark" asp-area="" asp-page="/services">Services</a>
+				</li>
+				<li>
+					<a class="nav-link text-dark" asp-area="" asp-page="/gallery">Gallery</a>
+				</li>
+				<li class="#">
+					<a class="nav-link text-dark" asp-area="" asp-page="/contact">Contact</a>
+				</li>
+
+				<!-- DROPDOWN OPTIONS -->
+				<li class="nav-item dropdown">
+				<li class="nav-item dropdown">
+					<button type="button" class="btn btn-primary">Admin</button>
+					<button type="button" class="btn btn-prim dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					</button>
+					<div class="dropdown-menu">
+
+						<a class="dropdown-item"
+						   asp-area="Food" asp-controller="Categories" asp-action="Index">Add Category</a>
+
+
+						<a class="dropdown-item"
+						   asp-area="Food" asp-controller="SubCategories" asp-action="Index">Add SubCategory</a>
+
+						<a class="dropdown-item"
+						   asp-area="Food" asp-controller="Recipes" asp-action="Index">Recipe</a>
+
+						<a class="dropdown-item"
+						   asp-area="Food" asp-controller="Customers" asp-action="Index">Add Customer</a>
+
+						<a class="dropdown-item"
+						   asp-area="Food" asp-controller="Competitions" asp-action="Index">Add Event</a>
+
+						<a class="dropdown-item"
+						   asp-area="Food" asp-controller="Comments" asp-action="Index">Comment</a>
+
+						<a class="dropdown-item"
+						   asp-area="Food" asp-controller="Registerations" asp-action="Index">Registeration</a>
+
+
+					</div>
+				</li>
+
+
+
+
+			</ul>
+		</div>
+
+	</nav>
+</header>
+
 <h1 style="color:black"><center> @ViewData["Title"]</center></h1>
 
 

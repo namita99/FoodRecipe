@@ -3,10 +3,74 @@
 @model ShowCategoryViewModel
 
 @{
+    ViewData["Title"] = "The Category";
 }
 
+<header>
+    <nav class="navbar navbar-expand navbar-dark bg-success">
+        <div class="container-fluid">
+            <a class="nav-link text-dark" asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">
+                <img src="~/Images/logo.png" style="width:35px" /> Food Recipe
+            </a>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-<h1>The Category</h1>
+                <li class="active">
+                    <a class="nav-link text-dark" asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">Home</a>
+
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/about1">About</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/services1">Services</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/gallery1">Gallery</a>
+                </li>
+                <li class="#">
+                    <a class="nav-link text-dark" asp-area="" asp-page="/contact1">Contact</a>
+                </li>
+
+                <!-- DROPDOWN OPTIONS -->
+                <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
+                    <button type="button" class="btn btn-primary">User</button>
+                    <button type="button" class="btn btn-prim dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div class="dropdown-menu">
+
+                        <a class="dropdown-item"
+                           asp-area="ManageTable" asp-controller="Home" asp-action="Index">Subcategory</a>
+
+
+                        <a class="dropdown-item"
+                           asp-area="ManageTable" asp-controller="Home" asp-action="Index1">Recipe</a>
+
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Recipes" asp-action="Index1">Add Recipe</a>
+
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Competitions" asp-action="Index1">Event</a>
+
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Comments" asp-action="Index1">Add Comment</a>
+
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Registerations" asp-action="Index1">Add Registeration</a>
+
+
+                    </div>
+                </li>
+
+
+
+
+            </ul>
+        </div>
+
+    </nav>
+</header>
+<h1 style="color:black"><center> @ViewData["Title"]</center></h1>
 
 <div class="row">
     <div class="col-md-4">
@@ -54,7 +118,8 @@
                             <option value="2">2</option>
                             <option value="3">3</option>
                         </select>
-                        
+                           <button type="button" class="btn btn-primary"> <a class="btn btn-primary" asp-area="Food" asp-controller="Recipes" asp-action="Create">Add Recipe</a> </button>
+
                     </div>
                 </div>
             }

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Food Recipe a hotel Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<title>Food Recipe a hotel Category Flat Bootstrap Responsive Website Template </title>
 <!-- custom-theme -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -47,12 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 	
 <body>
-	<style>
-          body{  
-  
-  background-color:pink;
-}  
-</style>
+	
 
 <div class="banner-header">
 		<!--header-->
@@ -67,75 +62,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="icon-bar"></span>
 					</button>
 					<div class="w3_navigation_pos">
-						<h1><a href="index.html">Food Recipe</a></h1>
+						<h1>
+								<a class="nav-link text-dark" asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">Food Recipe</a>
+							</h1>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav>
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Services</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
-							<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Admin <b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Categories" asp-action="Index">Add Category</a>
-										
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="SubCategories" asp-action="Index">Add SubCategory</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Recipes" asp-action="Index1">Recipes</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Customers" asp-action="Index">Add Customer</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Competitions" asp-action="Index">Add Event</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Comments" asp-action="Index">Comments</a>
-										</li>
-									</ul>
-							  </li>
+							<li class="active">
+									<a class="nav-link text-dark"
+									   asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">Home</a>
+								</li>
+							<li>
+								<a class="nav-link text-dark" asp-area="" asp-page="/about1">About</a>
+
+							</li>
+								<li>
+									<a class="nav-link text-dark" asp-area="" asp-page="/services1">Services</a>
+								</li>
+								<li>
+									<a class="nav-link text-dark" asp-area="" asp-page="/gallery1">Gallery</a>
+								</li>
+							
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">User <b class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<li>
-											<a class="dropdown-item"
+										<a class="dropdown-item"
 											   asp-area="ManageTable" asp-controller="Home" asp-action="Index">Subcategory</a>
-
-										</li>
+											   </li>
 										<li>
 											<a class="dropdown-item"
 											   asp-area="ManageTable" asp-controller="Home" asp-action="Index1">Recipe</a>
-										</li>
-						               <li>
+									</li>
+									<li>
 											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Recipes" asp-action="Index">Add Recipe</a>
-										</li>
-
-										<li>
+											   asp-area="Food" asp-controller="Recipes" asp-action="Index1">Add Recipe</a>
+									</li>
+									<li>
 											<a class="dropdown-item"
 											   asp-area="Food" asp-controller="Competitions" asp-action="Index1">Event</a>
 										</li>
 										<li>
+					
 											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Comments" asp-action="Index">Comments</a>
+											   asp-area="Food" asp-controller="Comments" asp-action="Index1">Add Comment</a>
+											   </li>
+											   <li>
+						                 <a class="dropdown-item"
+						                         asp-area="Food" asp-controller="Registerations" asp-action="Index1">Add Registeration</a>
 										</li>
 									</ul>
 									</li>
-							<li class="active"><a href="contact.html">Contact</a></li>
+							<li class="#">
+									<a class="nav-link text-dark" asp-area="" asp-page="/contact1">Contact</a>
+
+							</li>
 
 						</ul>
 					</nav>
@@ -636,7 +620,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="copyrights">
 	<div class="container">
 		<div class="copyright">
-			<p>&copy; 2017 Food Recipe. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+				<p>
+					&copy; 2017 Food Recipe. All Rights Reserved &nbsp;|&nbsp;
+					<a href="/swagger">Open API Documentation</a>
+				</p>
 		</div>
 		<div class="social-icons">
 			<ul>
