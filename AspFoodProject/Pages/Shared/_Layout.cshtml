@@ -12,13 +12,14 @@
             background-image: url('/Images/text1.jpg');
         }
     </style>
-		<nav>
-			<ul class="nav navbar-nav">
-                <partial name="_LoginPartial" />
+    	<nav >
 
-			</ul>
-		</nav>
-	
+        <ul class="nav navbar-nav">
+            <partial name="_LoginPartial" />
+
+        </ul>
+    </nav	
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -32,4 +33,6 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
 

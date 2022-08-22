@@ -1,9 +1,7 @@
 ﻿@page
-@model IndexModel
+@model AspFoodProject.Pages.IndexModel
 @{
-    ViewData["Title"] = "Home page";
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,24 +15,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <!-- //custom-theme -->
-<link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 
 <!-- for banner css -->
-<link href="~/css/carousel.css" type="text/css" rel="stylesheet" media="all"><!-- carousel css -->  
+<link href="css/carousel.css" type="text/css" rel="stylesheet" media="all"><!-- carousel css -->  
 <!-- //for banner css -->
 
-<link rel="stylesheet" href="~/css/owl.carousel.css" type="text/css" media="all"/> <!-- Owl-Carousel-CSS -->
+<link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="all"/> <!-- Owl-Carousel-CSS -->
 
-<link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- Theme-CSS -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" /><!-- Theme-CSS -->
 
-<link rel="~/stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" /> <!-- Flexslider-CSS -->
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" /> <!-- Flexslider-CSS -->
 
 <!-- js -->
-<script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <!-- //js -->
 
 <!-- font-awesome-icons -->
-<link rel="stylesheet" href="~/css/font-awesome.min.css" />
+<link rel="stylesheet" href="css/font-awesome.min.css" />
 <!-- //font-awesome-icons -->
 
 <!-- google fonts -->
@@ -46,7 +44,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 	
 <body>
-	
+
 <div class="banner-header">
 		<!--header-->
 		<div class="header">
@@ -60,76 +58,74 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="icon-bar"></span>
 					</button>
 					<div class="w3_navigation_pos">
-						<h1>
-						<a class="nav-link text-dark" asp-area="" asp-page="/Index">Food Recipe</a>
-
-						</h1>
+						<h1><a href="index.html">Food Recipe</a></h1>
 					</div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
+				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav>
-						<ul class="nav navbar-nav">
-							<li class="active">
-									<a class="nav-link text-dark"
-									   asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">Home</a>
-								</li>
-							<li>
-									<a class="nav-link text-dark" asp-area="" asp-page="/about">About</a>
-								</li>
-							<li>
-								<a class="nav-link text-dark" asp-area="" asp-page="/services">Services</a>	
-							</li>
-							<li>
-								<a class="nav-link text-dark" asp-area="" asp-page="/gallery">Gallery</a>	
-							</li>
-							<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Admin <b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Categories" asp-action="Index">Add Category</a>
-										
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="SubCategories" asp-action="Index">Add SubCategory</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Recipes" asp-action="Index">Recipe</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Customers" asp-action="Index">Add Customer</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Competitions" asp-action="Index">Add Event</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Comments" asp-action="Index">Comment</a>
-										</li>
-										<li>
-											<a class="dropdown-item"
-											   asp-area="Food" asp-controller="Registerations" asp-action="Index">Registeration</a>
-										</li>
+								<ul class="nav navbar-nav">
+									<li class="active">
+										<a class="nav-link text-dark"
+										   asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">Home</a>
+									</li>
+									<li>
+										<a class="nav-link text-dark" asp-area="" asp-page="/about1">About</a>
 
-									</ul>
-							  </li>
+									</li>
+									<li>
+										<a class="nav-link text-dark" asp-area="" asp-page="/services1">Services</a>
+									</li>
+									<li>
+										<a class="nav-link text-dark" asp-area="" asp-page="/gallery1">Gallery</a>
+									</li>
+
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">User <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li>
+												<a class="dropdown-item"
+												   asp-area="ManageTable" asp-controller="Home" asp-action="Index">Subcategory</a>
+											</li>
+											<li>
+												<a class="dropdown-item"
+												   asp-area="ManageTable" asp-controller="Home" asp-action="Index1">Recipe</a>
+											</li>
+											<li>
+												<a class="dropdown-item"
+												   asp-area="Food" asp-controller="Recipes" asp-action="Index1">Add Recipe</a>
+											</li>
+											<li>
+												<a class="dropdown-item"
+												   asp-area="Food" asp-controller="Competitions" asp-action="Index1">Event</a>
+											</li>
+											<li>
+
+												<a class="dropdown-item"
+												   asp-area="Food" asp-controller="Comments" asp-action="Index1">Add Comment</a>
+											</li>
+											<li>
+												<a class="dropdown-item"
+												   asp-area="Food" asp-controller="Registerations" asp-action="Index1">Add Registeration</a>
+											</li>
+										</ul>
+									</li>
+									<li class="#">
+										<a class="nav-link text-dark" asp-area="" asp-page="/contact1">Contact</a>
+
+									</li>
 								
-							<li class="#">
-								<a class="nav-link text-dark" asp-area="" asp-page="/contact">Contact</a>	
-								</li>
 
-						</ul>
+
+								</ul>
 					</nav>
 				</div>
 			</nav>	
 		</div>
 	</div>
 		<!--//header-->
+	</div>
 </div>
 
 <!-- slider -->
@@ -301,7 +297,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-1">
 			</div>
 			<div class="col-md-5 bottomright">
-				<img src="~/images/bottom.jpg" alt="" />
+				<img src="images/bottom.jpg" alt="" />
 				<div class="positiongrid1">
 					<h4>Cooking is one of the great gifts you can give to your love</h4>
 				</div>
@@ -387,7 +383,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3_agile_team_grids">
 				<div class="col-md-3 w3_agile_team_grid">
 					<div class="hover14 column">
-						<figure><img src="~/images/chef.png" alt=" " class="img-responsive" /></figure>
+						<figure><img src="images/chef.png" alt=" " class="img-responsive" /></figure>
 					</div>
 					<div class="team-tt">
 						<h4>Laura Mark</h4>
@@ -402,7 +398,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-3 w3_agile_team_grid">
 					<div class="hover14 column">
-						<figure><img src="~/images/chef.png" alt=" " class="img-responsive" /></figure>
+						<figure><img src="images/chef.png" alt=" " class="img-responsive" /></figure>
 					</div>
 					<div class="team-tt">
 						<h4>Wick dolde</h4>
@@ -417,7 +413,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-3 w3_agile_team_grid">
 					<div class="hover14 column">
-						<figure><img src="~/images/chef.png" alt=" " class="img-responsive" /></figure>
+						<figure><img src="images/chef.png" alt=" " class="img-responsive" /></figure>
 					</div>
 					<div class="team-tt">
 						<h4>Lusiana James</h4>
@@ -432,7 +428,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-3 w3_agile_team_grid">
 					<div class="hover14 column">
-						<figure><img src="~/images/chef.png" alt=" " class="img-responsive" /></figure>
+						<figure><img src="images/chef.png" alt=" " class="img-responsive" /></figure>
 					</div>
 					<div class="team-tt">
 						<h4>Catharine</h4>
@@ -462,25 +458,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="slides">
 						<li>
 							<div class="col-md-7 w3_testimonials_grid_left">
-								<p><img src="~/images/q1.png" alt=" " class="" />Morbi cursus, turpis quis laoreet blandit, odio turpis imperdiet nisl, 
+								<p><img src="images/q1.png" alt=" " class="" />Morbi cursus, turpis quis laoreet blandit, odio turpis imperdiet nisl, 
 									quis bibendum lorem purus lobortis nunc. Suspendisse tincidunt eu sapien 
 									pellentesque interdum. Aenean lacus sapien, blandit vel nibh in, imperdiet 
-									egestas erat Suspendisse tincidunt eusapien. Maecenas ac hendrerit purus. Lorem ipsum dolor sit amet<img src="~/images/q2.png" alt=" " class="" /></p>
+									egestas erat Suspendisse tincidunt eusapien. Maecenas ac hendrerit purus. Lorem ipsum dolor sit amet<img src="images/q2.png" alt=" " class="" /></p>
 							</div>
 							<div class="col-md-5 w3_testimonials_grid_right">
-								<img src="~/images/test1.jpg" alt=" " class="img-responsive" />
+								<img src="images/test1.jpg" alt=" " class="img-responsive" />
 							</div>
 							<div class="clearfix"> </div>
 						</li>
 						<li>
 							<div class="col-md-7 w3_testimonials_grid_left">
-								<p><img src="~/images/q1.png" alt=" " class="" />Morbi cursus, turpis quis laoreet blandit, odio turpis imperdiet nisl, 
+								<p><img src="images/q1.png" alt=" " class="" />Morbi cursus, turpis quis laoreet blandit, odio turpis imperdiet nisl, 
 									quis bibendum lorem purus lobortis nunc. Suspendisse tincidunt eu sapien 
 									pellentesque interdum. Aenean lacus sapien, blandit vel nibh in, imperdiet 
-									egestas erat Suspendisse tincidunt eusapien. Maecenas ac hendrerit purus. Lorem ipsum dolor sit amet<img src="~/images/q2.png" alt=" " class="" /></p>
+									egestas erat Suspendisse tincidunt eusapien. Maecenas ac hendrerit purus. Lorem ipsum dolor sit amet<img src="images/q2.png" alt=" " class="" /></p>
 							</div>
 							<div class="col-md-5 w3_testimonials_grid_right">
-								<img src="~/images/test2.jpg" alt=" " class="img-responsive" />
+								<img src="images/test2.jpg" alt=" " class="img-responsive" />
 							</div>
 							<div class="clearfix"> </div>
 						</li>
@@ -501,39 +497,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!-- Owl-Carousel -->
 					<div id="owl-demo" class="owl-carousel text-center agileinfo-gallery-row">
 						<div class="item g1">
-							<img class="lazyOwl" src="~/images/post1.jpg" title="Our latest gallery" alt=""/>
+							<img class="lazyOwl" src="images/post1.jpg" title="Our latest gallery" alt=""/>
 							<div class="agile-dish-caption">
-								<a href="#">post</a>
+								<a href="#">instagram post</a>
 							</div>
 						</div>
 						<div class="item g1">
-							<img class="lazyOwl" src="~/images/post2.jpg" title="Our latest gallery" alt=""/>
+							<img class="lazyOwl" src="images/post2.jpg" title="Our latest gallery" alt=""/>
 							<div class="agile-dish-caption">
-								<a href="#">post</a>
+								<a href="#">instagram post</a>
 							</div>
 						</div>
 						<div class="item g1">
-							<img class="lazyOwl" src="~/images/post6.jpg" title="Our latest gallery" alt=""/>
+							<img class="lazyOwl" src="images/post6.jpg" title="Our latest gallery" alt=""/>
 							<div class="agile-dish-caption">
-								<a href="#"> post</a>
+								<a href="#">instagram post</a>
 							</div>
 						</div>
 						<div class="item g1">
-							<img class="lazyOwl" src="~/images/post3.jpg" title="Our latest gallery" alt=""/>
+							<img class="lazyOwl" src="images/post3.jpg" title="Our latest gallery" alt=""/>
 							<div class="agile-dish-caption">
-								<a href="#">post</a>
+								<a href="#">instagram post</a>
 							</div>
 						</div>
 						<div class="item g1">
-							<img class="lazyOwl" src="~/images/post5.jpg" alt=""/>
+							<img class="lazyOwl" src="images/post5.jpg" alt=""/>
 							<div class="agile-dish-caption">
-								<a href="#"> post</a>
+								<a href="#">instagram post</a>
 							</div>
 						</div> 
 						<div class="item g1">
-							<img class="lazyOwl" src="~/images/post4.jpg" title="Our latest gallery" alt=""/>
+							<img class="lazyOwl" src="images/post4.jpg" title="Our latest gallery" alt=""/>
 							<div class="agile-dish-caption">
-								<a href="#"> post</a>
+								<a href="#">instagram post</a>
 							</div>
 						</div>
 					</div> 
@@ -622,8 +618,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="copyrights">
 	<div class="container">
 		<div class="copyright">
-			<p>&copy; 2017 Food Recipe. All Rights Reserved  &nbsp;|&nbsp; 
-            <a href="/swagger">Open API Documentation</a> </p>
+			<p>&copy; 2017 Food Recipe. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		</div>
 		<div class="social-icons">
 			<ul>
@@ -638,7 +633,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Footer -->	
 
 <!-- Owl-Carousel-JavaScript -->
-	<script src="~/js/owl.carousel.js"></script>
+	<script src="js/owl.carousel.js"></script>
 	<script>
 		$(document).ready(function() {
 			$("#owl-demo").owlCarousel ({
@@ -652,7 +647,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //Owl-Carousel-JavaScript -->  
 
 <!-- flexSlider -->
-<script defer src="~/js/jquery.flexslider.js"></script>
+<script defer src="js/jquery.flexslider.js"></script>
 <script type="text/javascript">
 $(window).load(function(){
   $('.flexslider').flexslider({
@@ -669,8 +664,8 @@ $(window).load(function(){
 <!-- start-smoth-scrolling -->
 <script src="js/SmoothScroll.min.js"></script>
 
-<script type="text/javascript" src="~/js/move-top.js"></script>
-	<script type="text/javascript" src="~/js/easing.js"></script>
+<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
@@ -701,7 +696,7 @@ $(window).load(function(){
 <!-- //here ends scrolling icon -->
 
 <!-- for bootstrap working -->
-	<script src="~/js/bootstrap.js"></script>
+	<script src="js/bootstrap.js"></script>
 <!-- //for bootstrap working -->
 
 </body>

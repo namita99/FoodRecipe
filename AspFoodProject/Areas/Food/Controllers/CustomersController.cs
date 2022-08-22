@@ -108,12 +108,11 @@ namespace AspFoodProject.Areas.Food.Controllers
                     // Save the changes 
                     _context.Add(customerModel);
                     await _context.SaveChangesAsync();              // update the database
-                    return RedirectToAction(nameof(Index));
+                   // return RedirectToAction(nameof(Index));
                 }
             }
-            return View(customerModel);
+            return View("Details1",customerModel);
         }
-
         // GET: Food/Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

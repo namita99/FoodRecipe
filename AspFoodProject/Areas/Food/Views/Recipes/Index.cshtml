@@ -73,7 +73,15 @@
 
 <h1 style="color:black"><center> @ViewData["Title"]</center></h1>
 
+<p>
+    <center>
+        <button type="button" class="btn btn-primary"> <a style="color:black" asp-area="ManageTable" asp-controller="Home" asp-action="Index1">Recipes by Category</a> </button>
+
+    </center>
+</p>
+
 <hr/>
+
 <table class="table">
     <thead>
         <tr class="alert-warning">
@@ -156,8 +164,12 @@
                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
             </td>
             <td>
+                    <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@item.RecipeId">Edit</a> </button>
+
                     <button type="button" class="btn btn-success">  <a style="color:black" asp-action="Details" asp-route-id="@item.RecipeId">Details</a> </button>
-            </td>
+                    <button type="button" class="btn btn-danger">  <a style="color:black" asp-action="Delete" asp-route-id="@item.RecipeId">Delete</a> </button>
+
+                </td>
         </tr>
 }
     </tbody>

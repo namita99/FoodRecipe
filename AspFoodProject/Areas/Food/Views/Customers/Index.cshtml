@@ -74,13 +74,6 @@
 
 <h1 style="color:black"><center> @ViewData["Title"]</center></h1>
 
-
-<p>
-	<center>
-		<button type="button" class="btn btn-primary"> <a style="color:black" asp-action="Create">Create New</a> </button>
-
-	</center>
-</p></p>
 <table class="table">
     <thead>
         <tr>
@@ -115,6 +108,7 @@
                 @Html.DisplayFor(modelItem => item.EmailID)
             </td>
             <td>
+				   	<button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> </button>
 
 					<button type="button" class="btn btn-success">  <a style="color:black" asp-action="Details" asp-route-id="@item.CustomerId">Details</a> </button>
 					<button type="button" class="btn btn-danger">  <a style="color:black" asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a> </button>

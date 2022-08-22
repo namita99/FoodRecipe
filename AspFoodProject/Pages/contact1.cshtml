@@ -32,6 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 	<!-- //google fonts -->
 
+	
 </head>
 
 <body>
@@ -41,6 +42,64 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			background-image: url('/Images/text1.jpg');
 		}
 	</style>
+	<script>
+		/*Put the JavaScript code here*/
+		function validateForm() {
+			var name = document.forms["myForm"]["name"];
+			var email = document.forms["myForm"]["email"];
+			var phone = document.forms["myForm"]["phone"];
+
+			var message = document.forms["myForm"]["message"];
+
+			if (name.value == "" || name.value.length < 5) {
+				document.getElementById('errorname').innerHTML = "Please enter a valid name";
+				name.focus();
+				return false;
+			} else {
+				document.getElementById('errorname').innerHTML = "";
+			}
+
+			if (email.value == "") {
+				document.getElementById('erroremail').innerHTML = "Please enter a valid email address";
+				email.focus();
+				return false;
+			} else {
+				document.getElementById('erroremail').innerHTML = "";
+			}
+
+
+
+			if (email.value.indexOf(".", 0) < 0) {
+				document.getElementById('erroremail').innerHTML = "Please enter a valid email address";
+				email.focus();
+				return false;
+			}
+
+			if (phone.value == "") {
+				document.getElementById('errorphone').innerHTML = "Please enter a valid Phone Number";
+				email.focus();
+				return false;
+			} else {
+				document.getElementById('errorphone').innerHTML = "";
+			}
+
+			if (phone.value.length < 10) {
+				document.getElementById('errorphone').innerHTML = "Please enter a valid phone number";
+				email.focus();
+				return false;
+			}
+			if (message.value == "") {
+				document.getElementById('errormsg').innerHTML = "Please enter a valid message";
+				message.focus();
+				return false;
+			} else {
+				document.getElementById('errormsg').innerHTML = "";
+			}
+
+			return true;
+		}
+	</script>
+
 
 	<div class="banner-header banner2">
 		<div class="banner-dott1">
@@ -133,12 +192,60 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<p class="heading">Get In Touch</p>
 			<div class="contact-agileinfo">
 				<div class="col-md-7 contact-right">
-					<form action="#" method="post">
-						<input type="text" name="Name" placeholder="Name" required="">
-						<input type="email" class="email" name="Email" placeholder="Email" required="">
-						<input type="text" name="Phone no" placeholder="Phone" required="">
-						<textarea name="Message" placeholder="Message" required=""></textarea>
-						<input type="submit" value="SUBMIT">
+					<form name="myForm" asp-area="" asp-page="/Index2" onsubmit="return validateForm()" method="post">
+						<table class="form-style">
+							<tr>
+								<td>
+									<label>
+										Your Name <span class="required">*</span>
+									</label>
+								</td>
+								<td>
+									<input type="text" name="name" class="long" />
+									<span class="error" id="errorname"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>
+										Your Email Address <span class="required">*</span>
+									</label>
+								</td>
+								<td>
+									<input type="email" name="email" class="long" />
+									<span class="error" id="erroremail"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>
+										Your Phone No <span class="required">*</span>
+									</label>
+								</td>
+								<td>
+									<input type="tel" name="phone" class="long" />
+									<span class="error" id="errorphone"></span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label>
+										Message <span class="required">*</span>
+									</label>
+								</td>
+								<td>
+									<textarea name="message" class="long field-textarea"></textarea>
+									<span class="error" id="errormsg"></span>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<input type="submit" value="Send">
+									<input type="reset" value="Reset">
+								</td>
+							</tr>
+						</table>
 					</form>
 				</div>
 				<div class="col-md-5 contact-left">

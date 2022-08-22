@@ -83,7 +83,7 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="alert-warning">
             <th>
                 @Html.DisplayNameFor(model => model.SubcategoryName)
             </th>
@@ -101,7 +101,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class="alert-info">
             <td>
                 @Html.DisplayFor(modelItem => item.SubcategoryName)
             </td>

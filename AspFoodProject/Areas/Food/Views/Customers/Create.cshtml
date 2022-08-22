@@ -29,40 +29,36 @@
 					<a class="nav-link text-dark" asp-area="" asp-page="/contact">Contact</a>
 				</li>
 
-				<!-- DROPDOWN OPTIONS -->
-				<li class="nav-item dropdown">
-				<li class="nav-item dropdown">
-					<button type="button" class="btn btn-primary">Admin</button>
-					<button type="button" class="btn btn-prim dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					</button>
-					<div class="dropdown-menu">
+                <!-- DROPDOWN OPTIONS -->
+                <li class="nav-item dropdown">
+                <li class="nav-item dropdown">
+                    <button type="button" class="btn btn-primary">User</button>
+                    <button type="button" class="btn btn-prim dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div class="dropdown-menu">
 
-						<a class="dropdown-item"
-						   asp-area="Food" asp-controller="Categories" asp-action="Index">Add Category</a>
-
-
-						<a class="dropdown-item"
-						   asp-area="Food" asp-controller="SubCategories" asp-action="Index">Add SubCategory</a>
-
-						<a class="dropdown-item"
-						   asp-area="Food" asp-controller="Recipes" asp-action="Index">Recipe</a>
-
-						<a class="dropdown-item"
-						   asp-area="Food" asp-controller="Customers" asp-action="Index">Add Customer</a>
-
-						<a class="dropdown-item"
-						   asp-area="Food" asp-controller="Competitions" asp-action="Index">Add Event</a>
-
-						<a class="dropdown-item"
-						   asp-area="Food" asp-controller="Comments" asp-action="Index">Comment</a>
-
-						<a class="dropdown-item"
-						   asp-area="Food" asp-controller="Registerations" asp-action="Index">Registeration</a>
+                        <a class="dropdown-item"
+                           asp-area="ManageTable" asp-controller="Home" asp-action="Index">Subcategory</a>
 
 
-					</div>
-				</li>
+                        <a class="dropdown-item"
+                           asp-area="ManageTable" asp-controller="Home" asp-action="Index1">Recipe</a>
 
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Recipes" asp-action="Index1">Add Recipe</a>
+
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Competitions" asp-action="Index1">Event</a>
+
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Comments" asp-action="Index1">Add Comment</a>
+
+                        <a class="dropdown-item"
+                           asp-area="Food" asp-controller="Registerations" asp-action="Index1">Add Registeration</a>
+
+
+                    </div>
+                </li>
 
 
 

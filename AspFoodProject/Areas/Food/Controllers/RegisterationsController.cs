@@ -94,11 +94,11 @@ namespace AspFoodProject.Areas.Food.Controllers
             {
                 _context.Add(registeration);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+              //  return RedirectToAction(nameof(Index));
             }
             ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventName", registeration.EventId);
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName", registeration.CustomerId);
-            return View(registeration);
+           ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerName", registeration.CustomerId);
+            return View("Details1",registeration);
         }
 
         // GET: Food/Registerations/Edit/5

@@ -111,18 +111,18 @@
             @Html.DisplayNameFor(model => model.Competition)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Competition.EventAddress)
+            @Html.DisplayFor(model => model.Competition.EventName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Customer)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Customer.CustomerAddress)
+            @Html.DisplayFor(model => model.Customer.CustomerName)
         </dd>
     </dl>
 </div>
 <div>
-    <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> </button> |
+    <button type="button" class="btn btn-primary">  <a style="color:black" asp-action="Edit" asp-route-id="@Model.RegisterId">Edit</a> </button> |
 
     <button type="button" class="btn btn-warning"> <a style="color:black" asp-action="Index">Back to List</a> </button>
 </div>

@@ -91,10 +91,10 @@ namespace AspFoodProject.Areas.Food.Controllers
             {
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+               // return RedirectToAction(nameof(Index));
             }
             ViewData["RecipeId"] = new SelectList(_context.Recipes, "RecipeId", "RecipeName", comment.RecipeId);
-            return View(comment);
+            return View("Details1",comment);
         }
 
         // GET: Food/Comments/Edit/5
