@@ -79,7 +79,11 @@ namespace AspFood.xUnitTestProject
                 Assert.Equal(expected: category.CategoryName,
                              actual: categories[ndx].CategoryName);
 
-                _testOutputHelper.WriteLine($"Row # {ndx} OKAY");
+                _testOutputHelper.WriteLine($"Row # {ndx} OKAY!! Lunch");
+               
+
+
+
                 ndx++;
             }
         }

@@ -16,7 +16,7 @@ namespace AspFoodProject.Models
 
         [Required(ErrorMessage = "{0} cannot be empty!")]
 
-        [Display(Name = "Comment Name")]
+        [Display(Name = "Comment")]
         public string CommentName { get; set; }
 
         [Required(ErrorMessage = "{0} cannot be empty!")]
@@ -27,7 +27,7 @@ namespace AspFoodProject.Models
 
         [Required(ErrorMessage = "{0} cannot be empty!")]
         
-        [Display(Name = "Any Questions")]
+        [Display(Name = "Any Suggestions")]
         public string query { get; set; }
 
         #region Navigation Properties to the Recipe Model

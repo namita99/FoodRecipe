@@ -9,6 +9,7 @@ namespace AspFoodProject.Models
     [Table(name: "Categories")]
     public class Category
     {
+        // ID
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Category ID")]
@@ -16,13 +17,13 @@ namespace AspFoodProject.Models
 
         [Required(ErrorMessage = "{0} cannot be empty!")]
         [Column(TypeName = "varchar(50)")]
-        [Display(Name = "Name of the Category")]
+        [Display(Name = "Name of the Category")]   //Name
         public string CategoryName { get; set; }
 
         [Required(ErrorMessage = "{0} cannot be empty!")]
         [MinLength(50, ErrorMessage = "{0} should have at least {1} characters")]
         [MaxLength(1000, ErrorMessage = "{0} should have maximum {1} characters")]
-        [Display(Name = "Description of the Category")]
+        [Display(Name = "Description of the Category")]    //Description
         public string CategoryDescription { get; set; }
 
         [StringLength(120)]

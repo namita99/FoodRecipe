@@ -8,10 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace AspFoodProject.Areas.Food.Controllers
 {
     [Area("Food")]
+    [Authorize(Roles = "AppUser, AppAdmin")]
+
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -42,6 +46,21 @@ namespace AspFoodProject.Areas.Food.Controllers
 
             return View(await _context.Customers.ToListAsync());
         }
+
+        public async Task<IActionResult> ShowComment()
+        {
+            _logger.LogInformation("-------------- Retrieved all the Categories from the database");
+
+            return View(await _context.Comments.ToListAsync());
+        }
+
+        public async Task<IActionResult> ShowCompetition()
+        {
+            _logger.LogInformation("-------------- Retrieved all the Categories from the database");
+
+            return View(await _context.Events.ToListAsync());
+        }
+
 
         // GET: Food/Customers/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -78,6 +97,24 @@ namespace AspFoodProject.Areas.Food.Controllers
 
             return View(customer);
         }
+
+        // GET: Food/Customers/Details/5
+        public async Task<IActionResult> DetailsCompetition(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var competition = await _context.Events
+                .FirstOrDefaultAsync(m => m.EventId == id);
+            if (competition == null)
+            {
+                return NotFound();
+            }
+
+            return View(competition);
+        }
         // GET: Food/Customers/Create
         public IActionResult Create()
         {
@@ -111,8 +148,11 @@ namespace AspFoodProject.Areas.Food.Controllers
                    // return RedirectToAction(nameof(Index));
                 }
             }
-            return View("Details1",customerModel);
+            return View("Index1",customerModel);
         }
+
+        [Authorize(Roles = "AppAdmin")]
+
         // GET: Food/Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -163,6 +203,8 @@ namespace AspFoodProject.Areas.Food.Controllers
             }
             return View(customer);
         }
+
+        [Authorize(Roles = " AppAdmin")]
 
         // GET: Food/Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)

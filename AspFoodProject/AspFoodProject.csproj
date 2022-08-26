@@ -12,6 +12,8 @@
     <Compile Remove="Migrations\20220819133218_RelatedCustomer.Designer.cs" />
     <Compile Remove="Migrations\20220819135820_RelatedCustomer.cs" />
     <Compile Remove="Migrations\20220819135820_RelatedCustomer.Designer.cs" />
+    <Compile Remove="Migrations\20220824101239_RelatedContext.cs" />
+    <Compile Remove="Migrations\20220824101239_RelatedContext.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +33,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Food\ViewModels\" />
-    <Folder Include="Areas\HomePage\ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

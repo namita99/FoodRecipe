@@ -40,13 +40,13 @@ namespace AspFoodProject.Models
 
         [Required]
         [Column(TypeName = "datetime2")]
-        [Display(Name = "Start Date")]
+        [Display(Name = "Registration Start Date")]
 
         public DateTime OrderDateTime { get; set; }
 
         [Required]
         [Column(TypeName = "datetime2")]
-        [Display(Name = "End Date")]
+        [Display(Name = "Registration End Date")]
 
         public DateTime OrderDateTime1 { get; set; }
 

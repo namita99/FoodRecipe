@@ -46,12 +46,12 @@ namespace AspFood.xUnitTestProject
                 new SubCategory
                 {
                      SubcategoryId = 1,
-                    SubcategoryName = "BreakFast"
+                    SubcategoryName = "Lunch"
                 },
                 new SubCategory
                 {
                      SubcategoryId = 1,
-                    SubcategoryName = "BreakFast"
+                    SubcategoryName = "Dinner"
                 }
             };
 

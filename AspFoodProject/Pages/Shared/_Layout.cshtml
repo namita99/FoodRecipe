@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AspFoodProject</title>
@@ -12,13 +14,14 @@
             background-image: url('/Images/text1.jpg');
         }
     </style>
-    	<nav >
 
-        <ul class="nav navbar-nav">
-            <partial name="_LoginPartial" />
 
-        </ul>
-    </nav	
+
+    <ul class="nav navbar-nav" style="float:right">
+        <partial name="_LoginPartial" />
+
+    </ul>
+
 
     <div class="container">
         <main role="main" class="pb-3">
@@ -33,6 +36,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-
-
 

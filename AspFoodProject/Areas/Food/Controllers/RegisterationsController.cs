@@ -7,10 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace AspFoodProject.Areas.Food.Controllers
 {
     [Area("Food")]
+    [Authorize(Roles = "AppUser,AppAdmin")]
+
+
     public class RegisterationsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,14 +28,14 @@ namespace AspFoodProject.Areas.Food.Controllers
         // GET: Food/Registerations
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Registeration.Include(r => r.Competition).Include(r => r.Customer);
+            var applicationDbContext = _context.Registerations.Include(r => r.Competition).Include(r => r.Customer);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Food/Registerations
         public async Task<IActionResult> Index1()
         {
-            var applicationDbContext = _context.Registeration.Include(r => r.Competition).Include(r => r.Customer);
+            var applicationDbContext = _context.Registerations.Include(r => r.Competition).Include(r => r.Customer);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -42,7 +47,7 @@ namespace AspFoodProject.Areas.Food.Controllers
                 return NotFound();
             }
 
-            var registeration = await _context.Registeration
+            var registeration = await _context.Registerations
                 .Include(r => r.Competition)
                 .Include(r => r.Customer)
                 .FirstOrDefaultAsync(m => m.RegisterId == id);
@@ -63,7 +68,7 @@ namespace AspFoodProject.Areas.Food.Controllers
                 return NotFound();
             }
 
-            var registeration = await _context.Registeration
+            var registeration = await _context.Registerations
                 .Include(r => r.Competition)
                 .Include(r => r.Customer)
                 .FirstOrDefaultAsync(m => m.RegisterId == id);
@@ -101,6 +106,8 @@ namespace AspFoodProject.Areas.Food.Controllers
             return View("Details1",registeration);
         }
 
+        [Authorize(Roles = "AppAdmin")]
+
         // GET: Food/Registerations/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -109,7 +116,7 @@ namespace AspFoodProject.Areas.Food.Controllers
                 return NotFound();
             }
 
-            var registeration = await _context.Registeration.FindAsync(id);
+            var registeration = await _context.Registerations.FindAsync(id);
             if (registeration == null)
             {
                 return NotFound();
@@ -156,6 +163,9 @@ namespace AspFoodProject.Areas.Food.Controllers
             return View(registeration);
         }
 
+        [Authorize(Roles = "AppAdmin")]
+
+
         // GET: Food/Registerations/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -164,7 +174,7 @@ namespace AspFoodProject.Areas.Food.Controllers
                 return NotFound();
             }
 
-            var registeration = await _context.Registeration
+            var registeration = await _context.Registerations
                 .Include(r => r.Competition)
                 .Include(r => r.Customer)
                 .FirstOrDefaultAsync(m => m.RegisterId == id);
@@ -181,15 +191,15 @@ namespace AspFoodProject.Areas.Food.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var registeration = await _context.Registeration.FindAsync(id);
-            _context.Registeration.Remove(registeration);
+            var registeration = await _context.Registerations.FindAsync(id);
+            _context.Registerations.Remove(registeration);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool RegisterationExists(int id)
         {
-            return _context.Registeration.Any(e => e.RegisterId == id);
+            return _context.Registerations.Any(e => e.RegisterId == id);
         }
     }
 }

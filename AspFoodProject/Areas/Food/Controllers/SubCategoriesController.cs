@@ -8,10 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace AspFoodProject.Areas.Food.Controllers
 {
     [Area("Food")]
+    [Authorize(Roles = "AppAdmin")]
+
     public class SubCategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -22,7 +22,7 @@ namespace AspFoodProject.Data
 
         public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<AspFoodProject.Models.Registeration> Registeration { get; set; }
+        public DbSet<Registeration> Registerations { get; set; }
 
 
     }

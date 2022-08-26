@@ -12,7 +12,9 @@ using Microsoft.AspNetCore.Authorization;
 namespace AspFoodProject.Areas.Food.Controllers
 {
     [Area("Food")]
-  
+    [Authorize(Roles = "AppUser")]
+
+
     public class RecipesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -92,10 +94,10 @@ namespace AspFoodProject.Areas.Food.Controllers
             {
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();
-                //return RedirectToAction(nameof(Details1));
+                return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", recipe.CategoryId);
-            return View("Details1", recipe);
+             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", recipe.CategoryId);
+            return View(recipe);
         }
 
         // GET: Food/Recipes/Edit/5

@@ -26,7 +26,7 @@ namespace AspFood.xUnitTestProject
             using var dbContext = DbContextMocker.GetApplicationDbContext(dbName);      // Disposable!
 
             var controller = new CategoriesController(dbContext, logger);
-            int findCategoryID = 900;
+            int findCategoryID = 500;
 
             // ACT
             IActionResult actionResultGet = controller.GetCategory(findCategoryID).Result;

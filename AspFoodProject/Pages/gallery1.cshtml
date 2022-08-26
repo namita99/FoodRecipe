@@ -4,6 +4,7 @@
 }
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,203 +47,249 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			font-family: Calibri, Helvetica, sans-serif;
 			background-image: url('/Images/text1.jpg');
 		}
+
+		.card {
+			background-color: powderblue;
+		}
+
+		.card-title {
+			font-family: 'Big Shoulders Text', cursive;
+			color: magenta;
+			text-transform: uppercase;
+			font-size: 16px;
+			padding: 5px 10px;
+			letter-spacing: 2px;
+			border: 0;
+		}
 	</style>
 	<div class="banner-header banner2">
 		<div class="banner-dott1">
 			<!--header-->
-			<div class="header">
-				<div class="container-fluid">
-					<nav class="navbar navbar-default">
-						<div class="navbar-header navbar-left">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<div class="w3_navigation_pos">
-								<h1>
-								      <a class="nav-link text-dark" asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">Food Recipe</a>
-
-								</h1>
+			<div class="banner-header">
+				<!--header-->
+				<div class="header">
+					<div class="container-fluid">
+						<nav class="navbar navbar-default">
+							<div class="navbar-header navbar-left">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<div class="w3_navigation_pos">
+									<h1><a class="nav-link text-dark" asp-area="" asp-page="/Index">Food Recipe</a></h1>
+								</div>
 							</div>
-						</div>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-							<nav>
-								<ul class="nav navbar-nav">
-									<li class="active">
-										<a class="nav-link text-dark"
-										   asp-area="HomePage" asp-controller="FoodRecipes" asp-action="Index">Home</a>
-									</li>
-									<li>
-										<a class="nav-link text-dark" asp-area="" asp-page="/about1">About</a>
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+								<nav>
+									<ul class="nav navbar-nav">
+										<li class="active">
+											<a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+										</li>
+										<li>
+											<a class="nav-link text-dark" asp-area="" asp-page="/about">About</a>
 
-									</li>
-									<li>
-										<a class="nav-link text-dark" asp-area="" asp-page="/services1">Services</a>
-									</li>
-									<li>
-										<a class="nav-link text-dark" asp-area="" asp-page="/gallery1">Gallery</a>
-									</li>
+										</li>
+										<li>
+											<a class="nav-link text-dark" asp-area="" asp-page="/services">Services</a>
+										</li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Manage<b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a class="dropdown-item" asp-area="" asp-page="/gallery">RECIPE</a>
 
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">User <b class="caret"></b></a>
-										<ul class="dropdown-menu">
-											<li>
-												<a class="dropdown-item"
-												   asp-area="ManageTable" asp-controller="Home" asp-action="Index">Subcategory</a>
-											</li>
-											<li>
-												<a class="dropdown-item"
-												   asp-area="ManageTable" asp-controller="Home" asp-action="Index1">Recipe</a>
-											</li>
-											<li>
-												<a class="dropdown-item"
-												   asp-area="Food" asp-controller="Recipes" asp-action="Index1">Add Recipe</a>
-											</li>
-											<li>
-												<a class="dropdown-item"
-												   asp-area="Food" asp-controller="Competitions" asp-action="Index1">Event</a>
-											</li>
-											<li>
+												</li>
+												<li>
+													<a class="dropdown-item" asp-area="" asp-page="/gallery1">EVENT</a>
+												</li>
 
-												<a class="dropdown-item"
-												   asp-area="Food" asp-controller="Comments" asp-action="Index1">Add Comment</a>
-											</li>
-											<li>
-												<a class="dropdown-item"
-												   asp-area="Food" asp-controller="Registerations" asp-action="Index1">Add Registeration</a>
-											</li>
-										</ul>
-									</li>
-									<li class="#">
-										<a class="nav-link text-dark" asp-area="" asp-page="/contact1">Contact</a>
 
-									</li>
 
-								</ul>
-							</nav>
-						</div>
-					</nav>
+											</ul>
+										</li>
+
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">Admin <b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Categories" asp-action="Index">Add Category</a>
+
+												</li>
+												<li>
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="SubCategories" asp-action="Index">Add SubCategory</a>
+												</li>
+
+												<li>
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Customers" asp-action="Index"> Customer</a>
+												</li>
+												<li>
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Competitions" asp-action="Index">Add Event</a>
+												</li>
+												<li>
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Comments" asp-action="Index">Add Comment</a>
+												</li>
+												<li>
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Registerations" asp-action="Index">Registeration</a>
+												</li>
+
+											</ul>
+										</li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-hover="Pages" data-toggle="dropdown">User <b class="caret"></b></a>
+											<ul class="dropdown-menu">
+												<li>
+													<a class="dropdown-item"
+													   asp-area="ManageTable" asp-controller="Home" asp-action="Index">Subcategory</a>
+												</li>
+												<li>
+													<a class="dropdown-item"
+													   asp-area="ManageTable" asp-controller="Home" asp-action="Index1">Recipe</a>
+												</li>
+												<li>
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Recipes" asp-action="Index1">Add Recipe</a>
+												</li>
+
+												<li>
+
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Customers" asp-action="ShowComment"> Comment</a>
+												</li>
+												<li>
+
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Customers" asp-action="ShowCompetition"> Events</a>
+												</li>
+												<li>
+													<a class="dropdown-item"
+													   asp-area="Food" asp-controller="Registerations" asp-action="Index1">Add Registeration</a>
+												</li>
+											</ul>
+										</li>
+										<li class="#">
+											<a class="nav-link text-dark" asp-area="" asp-page="/contact">Contact</a>
+
+										</li>
+
+
+
+									</ul>
+								</nav>
+							</div>
+						</nav>
+					</div>
+				</div>
+				<!--//header-->
+			</div>
+		</div>
+		<!--//header-->
+	</div>
+	</div>
+
+
+	<!-- gallery -->
+		
+		<div class="container">
+			<h2 class="heading">Our <span>Event</span></h2>
+			<p class="heading">Our Events</p>
+			
+				
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<img class="card-img-top" src="~/Images/img12.jpg" width="100%" alt="Card image cap">
+					<div class="card-body text-center">
+							<button type="button" class="btn btn-primary">  <a style="color:black" href="https://localhost:44340/Food/Customers/DetailsCompetition/2">Details</a> </button> |
+
+							<button type="button" class="btn btn-warning"> <a style="color:black" asp-area="Food" asp-controller="Registerations" asp-action="create">Register</a> </button>
+					</div>
 				</div>
 			</div>
-			<!--//header-->
 		</div>
-	</div>
-	<!-- // banner -->
-	<!-- gallery -->
-	<div id="gallery" class="gallery_main">
-		<div class="container">
-			<h2 class="heading">Our <span>Food</span></h2>
-			<p class="heading">Our Food recipes</p>
-			<div class="w3l_gallery_grids">
-				<ul class="w3l_gallery_grid gallery" id="lightGallery">
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery1.jpg" data-responsive-src="images/1.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery1.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery2.jpg" data-responsive-src="images/7.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery2.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery3.jpg" data-responsive-src="images/5.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery3.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery4.jpg" data-responsive-src="images/6.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery4.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery5.jpg" data-responsive-src="images/8.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery5.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery8.jpg" data-responsive-src="images/9.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery8.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery7.jpg" data-responsive-src="images/10.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery7.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery9.jpg" data-responsive-src="images/11.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery9.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-					<li data-title="Healthy Food" data-desc="Lorem Ipsum is simply dummy text of the printing." data-src="images/gallery6.jpg" data-responsive-src="images/12.jpg">
-						<div class="w3_w3l_gallery_grid box">
-							<a href="#">
-								<img src="images/gallery6.jpg" alt=" " class="img-responsive" />
-								<div class="caption scale-caption">
-									<h3>Healthy Food</h3>
-									<p>required for human nutrition</p>
-								</div>
-							</a>
-						</div>
-					</li>
-				</ul>
-				<div class="clearfix"> </div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<img class="card-img-top" src="~/Images/img8.jpg" width="100%" alt="Card image cap">
+					<div class="card-body text-center">
+							<button type="button" class="btn btn-primary">  <a style="color:black" href="https://localhost:44340/Food/Customers/DetailsCompetition/4">Details</a> </button> |
+
+							<button type="button" class="btn btn-warning"> <a style="color:black" asp-area="Food" asp-controller="Registerations" asp-action="create">Register</a> </button>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<br/>
+
+		<div class="row">
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<img class="card-img-top" src="~/Images/img17.jpg" width="100%" alt="Card image cap">
+					<div class="card-body text-center">
+							<button type="button" class="btn btn-primary">  <a style="color:black" href="https://localhost:44340/Food/Customers/DetailsCompetition/3">Details</a> </button> |
+
+							<button type="button" class="btn btn-warning"> <a style="color:black" asp-area="Food" asp-controller="Registerations" asp-action="create">Register</a> </button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="card">
+				<div class="card-body">
+					<img class="card-img-top" src="~/Images/img16.jpg" width="100%" alt="Card image cap">
+					<div class="card-body text-center">
+							<button type="button" class="btn btn-primary">  <a style="color:black" href="https://localhost:44340/Food/Customers/DetailsCompetition/6">Details</a> </button> |
+
+							<button type="button" class="btn btn-warning"> <a style="color:black" asp-area="Food" asp-controller="Registerations" asp-action="create">Register</a> </button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<br/>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<img class="card-img-top" src="~/Images/img18.jpg" width="100%" alt="Card image cap">
+						<div class="card-body text-center">
+							<button type="button" class="btn btn-primary">  <a style="color:black" href="https://localhost:44340/Food/Customers/DetailsCompetition/1">Details</a> </button> |
 
+							<button type="button" class="btn btn-warning"> <a style="color:black" asp-area="Food" asp-controller="Registerations" asp-action="create">Register</a> </button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="card">
+					<div class="card-body">
+						<img class="card-img-top" src="~/Images/img19.jpg" width="100%" alt="Card image cap">
+						<div class="card-body text-center">
+							<button type="button" class="btn btn-primary">  <a style="color:black" href="https://localhost:44340/Food/Customers/DetailsCompetition/5">Details</a> </button> |
+
+							<button type="button" class="btn btn-warning"> <a style="color:black" asp-area="Food" asp-controller="Registerations" asp-action="create">Register</a> </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+	<br/>
+		
 	<!-- News letter -->
 	<div class="agile-form">
 		<div class="container">
@@ -251,7 +298,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h4>For our latest updates</h4>
 			</div>
 			<div class="col-md-8">
-				<form action="#" method="get">
+				<form name="myForm" asp-area="" asp-page="/Index2" method="post">
 					<input type="email" name="email" placeholder="Enter Your Email Address" required="">
 					<input type="submit" value="">
 				</form>
@@ -319,7 +366,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="copyright">
 				<p>&copy; 2017 Food Recipe. All Rights Reserved &nbsp;|&nbsp; 
-			<a href="/swagger">Open API Documentation</a> </p>
+            <a href="/swagger">Open API Documentation</a> </p>
 
 			</div>
 			<div class="social-icons">
@@ -385,3 +432,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //for bootstrap working -->
 
 </body>
+</html>

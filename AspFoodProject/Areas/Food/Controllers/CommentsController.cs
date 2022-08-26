@@ -7,10 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AspFoodProject.Data;
 using AspFoodProject.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace AspFoodProject.Areas.Food.Controllers
 {
     [Area("Food")]
+    [Authorize(Roles = "AppAdmin")]
+
+
     public class CommentsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -27,12 +32,7 @@ namespace AspFoodProject.Areas.Food.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Food/Comments
-        public async Task<IActionResult> Index1()
-        {
-            var applicationDbContext = _context.Comments.Include(c => c.Recipe);
-            return View(await applicationDbContext.ToListAsync());
-        }
+       
 
         // GET: Food/Comments/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -53,24 +53,6 @@ namespace AspFoodProject.Areas.Food.Controllers
             return View(comment);
         }
 
-        // GET: Food/Comments/Details/5
-        public async Task<IActionResult> Details1(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var comment = await _context.Comments
-                .Include(c => c.Recipe)
-                .FirstOrDefaultAsync(m => m.CommentId == id);
-            if (comment == null)
-            {
-                return NotFound();
-            }
-
-            return View(comment);
-        }
 
 
         // GET: Food/Comments/Create
